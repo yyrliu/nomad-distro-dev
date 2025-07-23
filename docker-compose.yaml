@@ -29,7 +29,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=rabbitmq
       - RABBITMQ_DEFAULT_VHOST=/
     ports:
-      - 5672:5672
+      - 127.0.0.1:5672:5672
     volumes:
       - nomad_rabbitmq:/var/lib/rabbitmq
 
@@ -47,7 +47,7 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
     ports:
-      - 9200:9200
+      - 127.0.0.1:9200:9200
     volumes:
       - nomad_elastic:/usr/share/elasticsearch/data
 
@@ -60,7 +60,7 @@ services:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
     ports:
-      - 27017:27017
+      - 127.0.0.1:27017:27017
     volumes:
       - nomad_mongo:/data/db
       - nomad_mongo_config:/data/configdb
@@ -73,8 +73,8 @@ services:
     volumes:
       - nomad_temporal:/data
     ports:
-      - 7233:7233
-      - 8080:8080
+      - 127.0.0.1:7233:7233
+      - 127.0.0.1:8080:8080
 volumes:
   nomad_mongo:
   nomad_mongo_config:
